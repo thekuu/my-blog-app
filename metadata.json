@@ -1,0 +1,8 @@
+
+{
+  "name": "Lumina Blog - AI-Enhanced Creative Space",
+  "description": "A modern, minimalist blog platform featuring categories like Art, Science, and Tech, integrated with Gemini AI for intelligent chat and image analysis.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
