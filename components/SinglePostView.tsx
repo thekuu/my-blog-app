@@ -15,14 +15,14 @@ interface SinglePostViewProps {
   currentUser: any;
 }
 
-const SinglePostView: React.FC<SinglePostViewProps> = ({ 
-  post, 
-  allPosts, 
-  onBack, 
-  onLike, 
-  onComment, 
+const SinglePostView: React.FC<SinglePostViewProps> = ({
+  post,
+  allPosts,
+  onBack,
+  onLike,
+  onComment,
   onPostSelect,
-  currentUser 
+  currentUser
 }) => {
   const [commentText, setCommentText] = useState('');
   const [isAnalyzing, setIsAnalyzing] = useState(false);
@@ -60,13 +60,13 @@ const SinglePostView: React.FC<SinglePostViewProps> = ({
     <div className="bg-white min-h-screen animate-in fade-in duration-500">
       {/* Hero Image Section */}
       <div className="relative h-[50vh] md:h-[65vh] w-full overflow-hidden">
-        <img 
-          src={post.thumbnail} 
-          alt={post.title} 
+        <img
+          src={post.thumbnail}
+          alt={post.title}
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-        <button 
+        <button
           onClick={onBack}
           className="absolute top-8 left-8 p-3 bg-white/20 backdrop-blur-md hover:bg-white/40 text-white rounded-full transition-all shadow-lg group"
         >
@@ -102,11 +102,11 @@ const SinglePostView: React.FC<SinglePostViewProps> = ({
                 <p className="text-sm text-slate-500 flex items-center gap-1"><User size={12} /> Featured Contributor</p>
               </div>
               <div className="ml-auto flex items-center gap-2">
-                <button 
+                <button
                   onClick={() => onLike(post.id)}
                   className="flex items-center gap-2 px-4 py-2 rounded-full border border-slate-100 hover:bg-rose-50 hover:border-rose-100 text-slate-600 hover:text-rose-500 transition-all"
                 >
-                  <Heart size={20} fill={post.likes > 42 ? "currentColor" : "none"} />
+                  <Heart size={20} className={post.likes > 0 ? "fill-rose-500 text-rose-500" : ""} />
                   <span className="font-bold">{post.likes}</span>
                 </button>
                 <button className="p-2.5 rounded-full border border-slate-100 hover:bg-slate-50 text-slate-600 transition-all">
@@ -134,7 +134,7 @@ const SinglePostView: React.FC<SinglePostViewProps> = ({
                   </div>
                 </div>
                 {!aiAnalysis && (
-                  <button 
+                  <button
                     onClick={handleAnalysis}
                     disabled={isAnalyzing}
                     className="bg-indigo-600 text-white px-6 py-3 rounded-2xl font-bold hover:bg-indigo-700 disabled:opacity-50 flex items-center justify-center gap-2 transition-all shadow-lg shadow-indigo-200"
@@ -146,7 +146,7 @@ const SinglePostView: React.FC<SinglePostViewProps> = ({
               </div>
               {aiAnalysis ? (
                 <div className="text-slate-600 leading-relaxed animate-in fade-in slide-in-from-top-2 duration-500 bg-white p-6 rounded-2xl shadow-sm border border-indigo-50">
-                   <p className="italic text-lg">"{aiAnalysis}"</p>
+                  <p className="italic text-lg">"{aiAnalysis}"</p>
                 </div>
               ) : (
                 <p className="text-slate-500 italic">
@@ -168,7 +168,7 @@ const SinglePostView: React.FC<SinglePostViewProps> = ({
                   <User size={24} />
                 </div>
                 <div className="flex-grow flex flex-col gap-3">
-                  <textarea 
+                  <textarea
                     placeholder={currentUser ? "Join the conversation..." : "Sign in to share your thoughts"}
                     disabled={!currentUser}
                     rows={3}
@@ -177,7 +177,7 @@ const SinglePostView: React.FC<SinglePostViewProps> = ({
                     onChange={(e) => setCommentText(e.target.value)}
                   />
                   <div className="flex justify-end">
-                    <button 
+                    <button
                       disabled={!currentUser || !commentText.trim()}
                       className="bg-slate-900 text-white px-8 py-3 rounded-xl font-bold hover:bg-slate-800 disabled:opacity-50 transition-all flex items-center gap-2"
                     >

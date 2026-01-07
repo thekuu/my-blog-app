@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Menu, X, Search, User, LogOut, Github, Twitter, Instagram } from 'lucide-react';
+import { Menu, X, Search, User, LogOut, Github, Instagram } from 'lucide-react';
 import { Category } from '../types';
 import { CATEGORIES } from '../constants';
 
@@ -149,7 +149,7 @@ const Layout: React.FC<LayoutProps> = ({
             <div>
               <h3 className="text-white font-semibold mb-4 uppercase text-xs tracking-widest">Connect</h3>
               <ul className="space-y-2">
-                <li><a href="#" className="hover:text-white transition-colors flex items-center gap-2"><Twitter size={16} /> Twitter</a></li>
+                <li><a href="#" className="hover:text-white transition-colors flex items-center gap-2"><X size={16} /> X</a></li>
                 <li><a href="#" className="hover:text-white transition-colors flex items-center gap-2"><Instagram size={16} /> Instagram</a></li>
                 <li><a href="#" className="hover:text-white transition-colors flex items-center gap-2"><Github size={16} /> Github</a></li>
               </ul>

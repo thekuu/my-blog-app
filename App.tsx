@@ -176,6 +176,10 @@ const App: React.FC = () => {
   };
 
   const handleLike = async (postId: string) => {
+    if (!currentUser) {
+      setIsAuthModalOpen(true);
+      return;
+    }
     // Optimistic update
     const post = posts.find(p => p.id === postId);
     if (!post) return;
@@ -185,7 +189,13 @@ const App: React.FC = () => {
     const newLikes = post.likes + 1;
     setPosts(posts.map(p => p.id === postId ? { ...p, likes: newLikes } : p));
 
-    await supabase.from('posts').update({ likes: newLikes }).eq('id', postId);
+    const { error } = await supabase.from('posts').update({ likes: newLikes }).eq('id', postId);
+
+    if (error) {
+      console.error("Error updating likes:", error);
+      // Revert optimistic update
+      setPosts(posts.map(p => p.id === postId ? { ...p, likes: post.likes } : p));
+    }
   };
 
   // This function is passed to SinglePostView but we need to update it to use Supabase
