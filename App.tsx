@@ -263,50 +263,58 @@ const App: React.FC = () => {
       ) : (
         <>
           {/* Featured / Hero Section (only on home) */}
-          {!showDashboard && !activeCategory && !searchQuery && (
-            <section className="relative min-h-[80vh] flex flex-col justify-center overflow-visible bg-slate-900 mb-16">
-              <div className="absolute inset-0 z-0">
-                <img
-                  src="https://picsum.photos/1920/1080?random=10"
-                  className="w-full h-full object-cover opacity-50 scale-105 blur-sm"
-                  alt="hero"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent"></div>
-              </div>
-              <div className="container mx-auto px-4 z-10 py-12 md:py-24">
-                <div className="max-w-3xl">
-                  <span className="inline-flex items-center gap-2 text-indigo-400 font-bold tracking-[0.2em] uppercase text-xs mb-6">
-                    <Sparkles size={16} />
-                    The Future of Creativity
-                  </span>
-                  <h2 className="font-serif text-5xl md:text-7xl font-bold text-white mb-8 leading-tight">
-                    Where Science Meets <span className="text-indigo-400 italic">Art</span>.
-                  </h2>
-                  <p className="text-slate-300 text-lg md:text-xl mb-10 max-w-xl leading-relaxed">
-                    Explore a universe of high-quality insights on technology, design, and beyond. Join our community of visionaries today.
-                  </p>
-                  <div className="flex flex-wrap items-center gap-4 mt-6">
-                    {!currentUser && (
-                      <button
-                        onClick={() => setIsAuthModalOpen(true)}
-                        className="bg-indigo-600 text-white px-8 py-4 rounded-full font-bold hover:bg-indigo-700 transition-all shadow-xl active:scale-95"
-                      >
-                        Start Reading
-                      </button>
-                    )}
-                    {currentUser && (
-                      <button
-                        onClick={() => setShowDashboard(true)}
-                        className="bg-white/10 backdrop-blur-md text-white border border-white/20 px-8 py-4 rounded-full font-bold hover:bg-white/20 transition-all"
-                      >
-                        Open My Studio
-                      </button>
-                    )}
-                  </div>
-                </div>
-              </div>
-            </section>
+{!showDashboard && !activeCategory && !searchQuery && (
+  <section className="relative min-h-[80vh] flex flex-col justify-center overflow-hidden bg-slate-900 mb-16">
+    {/* Background */}
+    <div className="absolute inset-0 z-0">
+      <img
+        src="https://picsum.photos/1920/1080?random=10"
+        alt="hero"
+        className="w-full h-full object-cover opacity-50 scale-[1.03] blur-sm"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent" />
+    </div>
+
+    {/* Content */}
+    <div className="container mx-auto px-4 z-10 py-12 md:py-24">
+      <div className="max-w-3xl">
+        <span className="inline-flex items-center gap-2 text-indigo-400 font-bold tracking-[0.2em] uppercase text-xs mb-6">
+          <Sparkles size={16} />
+          The Future of Creativity
+        </span>
+
+        <h2 className="font-serif text-5xl md:text-7xl font-bold text-white mb-8 leading-tight">
+          Where Science Meets <span className="text-indigo-400 italic">Art</span>.
+        </h2>
+
+        <p className="text-slate-300 text-lg md:text-xl mb-10 max-w-xl leading-relaxed">
+          Explore a universe of high-quality insights on technology, design, and beyond. Join our community of visionaries today.
+        </p>
+
+        <div className="flex flex-wrap items-center gap-4 mt-6">
+          {!currentUser && (
+            <button
+              onClick={() => setIsAuthModalOpen(true)}
+              className="bg-indigo-600 text-white px-8 py-4 rounded-full font-bold hover:bg-indigo-700 transition-all shadow-xl active:scale-95"
+            >
+              Start Reading
+            </button>
           )}
+
+          {currentUser && (
+            <button
+              onClick={() => setShowDashboard(true)}
+              className="bg-white/10 backdrop-blur-md text-white border border-white/20 px-8 py-4 rounded-full font-bold hover:bg-white/20 transition-all"
+            >
+              Open My Studio
+            </button>
+          )}
+        </div>
+      </div>
+    </div>
+  </section>
+)}
+
 
 
           <div className="container mx-auto px-4 py-12">
